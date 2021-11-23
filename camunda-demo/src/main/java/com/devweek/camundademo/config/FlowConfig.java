@@ -18,13 +18,6 @@ public class FlowConfig {
     private FlowProperties flowProperties;
 
     @Bean
-    public DmnEngine dmnEngine() {
-        return DmnEngineConfiguration
-                .createDefaultDmnEngineConfiguration()
-                .buildEngine();
-    }
-
-    @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(flowProperties.getDb().getDriverClassName());
@@ -66,17 +59,7 @@ public class FlowConfig {
     }
 
     @Bean
-    public RepositoryService repositoryService(ProcessEngine processEngine) {
-        return processEngine.getRepositoryService();
-    }
-
-    @Bean
     public RuntimeService runtimeService(ProcessEngine processEngine) {
         return processEngine.getRuntimeService();
-    }
-
-    @Bean
-    public TaskService taskService(ProcessEngine processEngine) {
-        return processEngine.getTaskService();
     }
 }
